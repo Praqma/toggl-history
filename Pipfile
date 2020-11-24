@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-toggl = "0.1.12"
+TogglPy = "0.1.12"
 
 [dev-packages]
 

@@ -2,7 +2,6 @@ import calendar
 
 from datetime import date
 
-
 def get_previous_month(given_day = date.today()):
     """
     Returns the first day of the previous month for the given day
