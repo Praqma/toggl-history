@@ -7,16 +7,23 @@ def store(toggl, monthCount):
     for _ in range(monthCount):
         from_date, to_date = time.get_month_day_range(day_in_month)
 
+        # format
         month_report = toggl.get_month_report(from_date, to_date)
         collapsed_report = collapse_month_report(month_report)
         raw_csv, pretty_csv = collapsed_report_to_csv(collapsed_report)
 
-        print("=== raw ===")
-        print(raw_csv)
-        print()
-        print("=== pretty ===")
-        print(pretty_csv)
-        print()
+        # save to some files for now
+        raw_filename = f'{day_in_month.month}-raw.csv'
+        print(f'Saving to {raw_filename}')
+        raw_file = open(raw_filename, "w")
+        raw_file.write(raw_csv)
+        raw_file.close()
+
+        pretty_filename = f'{day_in_month.month}-pretty.csv'
+        print(f'Saving to {pretty_filename}')
+        pretty_file = open(pretty_filename, "w")
+        pretty_file.write(pretty_csv)
+        pretty_file.close()
 
         day_in_month = time.get_previous_month(day_in_month)
 
