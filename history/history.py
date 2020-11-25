@@ -45,6 +45,7 @@ def collapse_month_report(month_report):
         collapsed_entries.append(dict(
             uid=first_entry["uid"],
             user=first_entry["user"],
+            client=first_entry["client"],
             pid=first_entry["pid"],
             project=first_entry["project"],
             tid=first_entry["tid"],
@@ -58,16 +59,16 @@ def collapse_month_report(month_report):
 
 
 def collapsed_report_to_csv(month_report):
-    raw_header = "user_id;project_id;task_id;is_billable;duration;entry_ids\n"
-    pretty_header = "user;project;task;is_billable;duration\n"
+    raw_header = "user_id;client;project_id;task_id;is_billable;duration;entry_ids\n"
+    pretty_header = "user;client;project;client;task;is_billable;duration\n"
 
     raw_lines = []
     pretty_lines = []
     for entry in month_report:
         raw_lines.append(
-            f'{entry["uid"]};{entry["pid"]};{entry["tid"]};{entry["is_billable"]};{entry["dur"]};{entry["ids"]}')
+            f'{entry["uid"]};{entry["client"]};{entry["pid"]};{entry["tid"]};{entry["is_billable"]};{entry["dur"]};{entry["ids"]}')
         pretty_lines.append(
-            f'{entry["user"]};{entry["project"]};{entry["task"]};{"billable" if entry["is_billable"] else "non-billable"};{time.format_ms_as_hhmmss(entry["dur"])}')
+            f'{entry["user"]};{entry["client"]};{entry["project"]};{entry["task"]};{"billable" if entry["is_billable"] else "non-billable"};{time.format_ms_as_hhmmss(entry["dur"])}')
 
     raw_lines.sort()
     pretty_lines.sort()
