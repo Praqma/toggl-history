@@ -2,6 +2,20 @@ import calendar
 
 from datetime import date
 
+
+def format_ms_as_hhmmss(miliseconds):
+    """
+    Formats given miliseconds (int) as a string: hh:mm:ss
+
+    >>> format_ms_as_hhmmss(115123456)
+    '31:58:43'
+    """
+    seconds = int(miliseconds/1000)
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    return f'{h:d}:{m:02d}:{s:02d}'
+
+
 def get_previous_month(given_day = date.today()):
     """
     Returns the first day of the previous month for the given day
