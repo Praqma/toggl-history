@@ -53,3 +53,7 @@ Given a month (M) and two points in time (S, E):
   - Output as new
 - Summarize the results
 - Ship them off to _Meowth_
+
+## SQLite
+
+If requests for more reports start rolling in, consider using SQLite for an in-memory database. Good stuff!
