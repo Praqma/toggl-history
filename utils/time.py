@@ -15,6 +15,47 @@ def format_ms_as_hhmmss(miliseconds):
     h, m = divmod(m, 60)
     return f'{h:d}:{m:02d}:{s:02d}'
 
+def get_month_range(start, until):
+    """
+    Returns a range of months between the given dates
+
+    >>> get_month_range((1991, 1), (1991, 1))
+    []
+
+    >>> get_month_range((1991, 1), (1991, 2))
+    [datetime.date(1991, 1, 1)]
+
+    >>> get_month_range((1991, 1), (1991, 3))
+    [datetime.date(1991, 1, 1), datetime.date(1991, 2, 1)]
+
+    >>> get_month_range((1991, 12), (1992, 2))
+    [datetime.date(1991, 12, 1), datetime.date(1992, 1, 1)]
+
+    >>> len(get_month_range((1991, 12), (1993, 2)))
+    14
+    """
+    start_year, start_month = start
+    until_year, until_month = until
+    if start_year == until_year:
+        return [
+            date(start_year, month, 1)
+            for month in range(start_month, until_month)
+        ]
+    else:
+        first_year = [
+            date(start_year, month, 1)
+            for month in range(start_month, 13)
+        ]
+        in_between_years = [
+            date(year, month, 1)
+            for year in range(start_year + 1, until_year)
+            for month in range(1, 13)
+        ]
+        final_year = [
+            date(until_year, month, 1)
+            for month in range(1, until_month)
+        ]
+        return first_year + in_between_years + final_year
 
 def get_previous_month(given_day = date.today()):
     """
