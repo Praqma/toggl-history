@@ -3,7 +3,7 @@ from subprocess import check_call
 
 class Git(object):
 
-    def call_something():
+    def call_something(self):
         # https://docs.python.org/3/library/subprocess.html
 
         # getting the output
