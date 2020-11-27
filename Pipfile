@@ -8,6 +8,7 @@ TogglPy = "0.1.12"
 
 [dev-packages]
 pytest = "6.1.2"
+mypy = "0.790"
 
 [requires]
 python_version = "3.7"
