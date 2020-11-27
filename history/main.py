@@ -2,6 +2,7 @@ import argparse
 
 from history import history
 from history.toggl import Toggl
+from utils.time import get_month_range
 
 parser = argparse.ArgumentParser(description='Check the history of closed Toggl months')
 parser.add_argument('token', help='Toggl user token')
@@ -12,6 +13,8 @@ def main():
 
     toggl = Toggl(args.token, args.workspace)
 
-    history.store(toggl, 3)
+    months = get_month_range((2020, 9), (2020, 11))
+
+    history.store(toggl, months)
 
     return 0

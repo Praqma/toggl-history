@@ -1,11 +1,8 @@
 from collections import defaultdict
 from utils import time
 
-# FIXME: Just generate a list of days/day ranges, replace the fancy "get previous month" calls in the loop
-def store(toggl, monthCount):
-    day_in_month = time.get_previous_month()
-
-    for _ in range(monthCount):
+def store(toggl, months):
+    for day_in_month in months:
         from_date, to_date = time.get_month_day_range(day_in_month)
 
         # format
@@ -26,7 +23,6 @@ def store(toggl, monthCount):
         pretty_file.write(pretty_csv)
         pretty_file.close()
 
-        day_in_month = time.get_previous_month(day_in_month)
 
 # FIXME: https://docs.python.org/3/library/itertools.html
 def collapse_month_report(month_report):
