@@ -1,9 +1,10 @@
 import calendar
 
-from datetime import date
+from datetime import date, datetime
+from typing import Tuple
 
 
-def format_ms_as_hhmmss(miliseconds):
+def format_ms_as_hhmmss(miliseconds: int):
     """
     Formats given miliseconds (int) as a string: hh:mm:ss
 
@@ -15,7 +16,7 @@ def format_ms_as_hhmmss(miliseconds):
     h, m = divmod(m, 60)
     return f'{h:d}:{m:02d}:{s:02d}'
 
-def get_month_range(start, until):
+def get_month_range(start: Tuple[int, int], until: Tuple[int, int]):
     """
     Returns a range of months between the given dates
 
@@ -57,7 +58,7 @@ def get_month_range(start, until):
         ]
         return first_year + in_between_years + final_year
 
-def get_month_day_range(day_in_month):
+def get_month_day_range(day_in_month: date):
     """
     Returns the first and last day for the given day's month
 
