@@ -1,6 +1,7 @@
 from collections import defaultdict
 from utils import time
 
+# FIXME: Just generate a list of days/day ranges, replace the fancy "get previous month" calls in the loop
 def store(toggl, monthCount):
     day_in_month = time.get_previous_month()
 
@@ -27,7 +28,7 @@ def store(toggl, monthCount):
 
         day_in_month = time.get_previous_month(day_in_month)
 
-
+# FIXME: https://docs.python.org/3/library/itertools.html
 def collapse_month_report(month_report):
     grouped_entries = defaultdict(list)
     for entry in month_report:
@@ -57,7 +58,7 @@ def collapse_month_report(month_report):
 
     return collapsed_entries
 
-
+# FIXME: https://docs.python.org/3/library/csv.html
 def collapsed_report_to_csv(month_report):
     raw_header = "user_id;client;project_id;task_id;is_billable;duration;entry_ids\n"
     pretty_header = "user;client;project;client;task;is_billable;duration\n"

@@ -1,4 +1,3 @@
-import calendar
 import sys
 
 from toggl.TogglPy import Toggl as TogglClient
@@ -26,17 +25,17 @@ class Toggl(object):
 
     def get_month_report(self, from_date, to_date):
         page = 0
-        totalResults = 1
-        allResults = []
+        expectedResultCount = 1
+        currentResults = []
 
         print(f"requesting from {from_date} to {to_date}")
-        while len(allResults) < totalResults:
+        while len(currentResults) < expectedResultCount:
             page = page + 1
             result = self.get_month_report_page(from_date, to_date, page)
-            allResults.extend(result["data"])
-            totalResults = result["total_count"]
-            sys.stdout.write(f'received page {page} - requested {len(allResults)} out of {totalResults}\r')
+            currentResults.extend(result["data"])
+            expectedResultCount = result["total_count"]
+            sys.stdout.write(f'received page {page} - requested {len(currentResults)} out of {expectedResultCount}\r')
             sys.stdout.flush()
         print()
 
-        return allResults
+        return currentResults

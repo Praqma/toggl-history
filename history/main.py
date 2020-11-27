@@ -1,5 +1,4 @@
 import argparse
-import sys
 
 from history import history
 from history.toggl import Toggl
