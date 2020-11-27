@@ -57,3 +57,7 @@ Given a month (M) and two points in time (S, E):
 ## SQLite
 
 If requests for more reports start rolling in, consider using SQLite for an in-memory database. Good stuff!
+
+## Parallelization
+
+Take a look at the [multiprocessing module](https://docs.python.org/3/library/multiprocessing.html?module-multiprocessing)
