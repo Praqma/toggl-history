@@ -22,9 +22,9 @@ Each month's result gets committed to a separate branch of a dedicated git repos
 ```bash
 $ git log --oneline january february
 
-*    bb222 - "Entries for January on 01-05-2020" (january)
+*    dd444 - "Entries for January on 01-05-2020" (january)
 |  * 33ccc - "Entries for February on 01-05-2020" (february)
-*  | bb222 - "Entries for January on 01-04-2020"
+*  | cc333 - "Entries for January on 01-04-2020"
 |  * 22bbb - "Entries for February on 01-04-2020"
 *  | bb222 - "Entries for January on 01-03-2020"
 |  * 11aaa - "Entries for February on 01-03-2020"
